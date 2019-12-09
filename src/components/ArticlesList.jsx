@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import getArticles from "./api";
+import { getArticles } from "./api";
+import { Link } from "@reach/router";
 
 class ArticlesList extends Component {
   state = {
@@ -23,7 +24,9 @@ class ArticlesList extends Component {
                 <br></br>
                 Votes:{article.votes}
                 <br></br>
-                Article_id:{article.article_id}
+                <Link to={`/articles/${article.article_id}`}>
+                  Article_id:{article.article_id}
+                </Link>
               </li>
             );
           })}

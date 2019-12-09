@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getArticles = topic => {
+export const getArticles = topic => {
   console.log(topic);
   return axios
     .get("https://hamza-nc-news.herokuapp.com/api/articles", {
@@ -13,4 +13,12 @@ const getArticles = topic => {
       return response.data.articles;
     });
 };
-export default getArticles;
+
+export const getSingleArticle = article_id => {
+  console.log(article_id);
+  return axios
+    .get(`https://hamza-nc-news.herokuapp.com/api/articles/${article_id}`)
+    .then(response => {
+      return response.data.article;
+    });
+};
