@@ -13,17 +13,20 @@ class ArticleID extends Component {
       <div>
         <ul>
           <li key={article.article_id}>
-            {article.articleID}
+            Article_id:{article.article_id}
             <br></br>
-            {article.title}
+            Title: {article.title}
             <br></br>
-            {article.body}
+            Body:{article.body}
             <br></br>
-            {article.votes} <br></br>
-            {article.topic}<br></br>
-            {article.author}<br></br>
-            {article.created_at}<br></br>
-            {article.comment_count}
+            Votes:{article.votes} <br></br>
+            Topic:{article.topic}
+            <br></br>
+            Author:{article.author}
+            <br></br>
+            Created_at:{article.created_at}
+            <br></br>
+            Comment_Count:{article.comment_count}
           </li>
         </ul>
       </div>
