@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { getSingleArticle } from "./api";
+import IsLoading from "./IsLoading";
 
 class ArticleID extends Component {
   state = {
-    article: []
+    article: [],
+    isLoading: true
   };
   render() {
     const { article_id } = this.props;
     const { article } = this.state;
-    console.log(article);
+    if (this.state.isLoading) return <IsLoading />;
     return (
       <div>
         <ul>
@@ -30,14 +32,12 @@ class ArticleID extends Component {
           </li>
         </ul>
       </div>
-
-      
     );
   }
   componentDidMount() {
     const { article_id } = this.props;
     getSingleArticle(article_id).then(response => {
-      this.setState({ article: response });
+      this.setState({ article: response, isLoading: false });
     });
   }
 }

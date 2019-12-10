@@ -2,15 +2,19 @@ import React, { Component } from "react";
 import { getArticles } from "./api";
 import { Link } from "@reach/router";
 import SortBy from "./SortBy";
+import IsLoading from "./IsLoading";
 
 class ArticlesList extends Component {
   state = {
-    articles: []
+    articles: [],
+    isLoading: true,
+    sort_by: "created_at"
   };
 
   render() {
-    const { topic } = this.props;
-
+    if (this.state.isLoading) {
+      return <IsLoading />;
+    }
     return (
       <div>
         <SortBy function={this.fetchArticles} />
@@ -40,17 +44,19 @@ class ArticlesList extends Component {
 
   fetchArticles = sort_by => {
     const { topic } = this.props;
+
     getArticles(topic, sort_by).then(response => {
-      this.setState({ articles: response });
+      this.setState({ articles: response, isLoading: false, sort_by: sort_by });
     });
   };
   componentDidMount() {
+    const { topic } = this.props;
     this.fetchArticles();
   }
   componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
     if (prevProps.topic !== topic) {
-      this.fetchArticles(topic);
+      this.fetchArticles();
     }
   }
 }
