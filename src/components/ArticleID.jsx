@@ -31,13 +31,7 @@ class ArticleID extends Component {
         </ul>
       </div>
 
-      // <div>
-      //   <ul>
-      //     {this.state.article.map(a => {
-      //       return <li>{a.article_id}</li>;
-      //     })}
-      //   </ul>
-      // </div>
+      
     );
   }
   componentDidMount() {

@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import { getArticles } from "./api";
 import { Link } from "@reach/router";
+import SortBy from "./SortBy";
 
 class ArticlesList extends Component {
   state = {
     articles: []
   };
+
   render() {
     const { topic } = this.props;
     // console.log(topic, "topic inside render");
     return (
       <div>
-        ARTICLES
+        <SortBy function={this.fetchArticles} />
+        <br></br> ARTICLES
         <ul>
           {this.state.articles.map(article => {
             return (
@@ -34,18 +37,20 @@ class ArticlesList extends Component {
       </div>
     );
   }
-  componentDidMount() {
+
+  fetchArticles = sort_by => {
     const { topic } = this.props;
-    getArticles(topic).then(response => {
+    getArticles(topic, sort_by).then(response => {
       this.setState({ articles: response });
     });
+  };
+  componentDidMount() {
+    this.fetchArticles();
   }
   componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
     if (prevProps.topic !== topic) {
-      getArticles(topic).then(response => {
-        this.setState({ articles: response });
-      });
+      this.fetchArticles();
     }
   }
 }
