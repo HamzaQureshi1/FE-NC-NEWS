@@ -9,32 +9,36 @@ class SortBy extends Component {
   render() {
     return (
       <div>
-        <DropdownButton id="dropdown-basic-button" title="sort_by">
-          <Dropdown.Item onClick={this.handleChange}>Created at</Dropdown.Item>
-          <Dropdown.Item onClick={this.handleChange}>Votes</Dropdown.Item>
-          <Dropdown.Item onClick={this.handleChange}>
+        {/* <DropdownButton id="dropdown-basic-button" title="sort_by">
+          <Dropdown.Item onClick={this.handleChange} value="created_at">
+            Created at
+          </Dropdown.Item>
+          <Dropdown.Item onClick={this.handleChange} value="votes">
+            Votes
+          </Dropdown.Item>
+          <Dropdown.Item onClick={this.handleChange} value="comment_count">
             Comment count
           </Dropdown.Item>
-        </DropdownButton>
+        </DropdownButton> */}
+        <select>
+          <option value="created_at" onClick={this.handleChange}>
+            Created at
+          </option>
+          <option value="votes" onClick={this.handleChange}>
+            Votes
+          </option>
+          <option value="comment_count" onClick={this.handleChange}>
+            Comment count
+          </option>
+        </select>
       </div>
     );
   }
   handleChange = event => {
     const fetchArticles = this.props.function;
-    const { sort_by } = this.state;
-    this.setState({ sortBy: event.target.value });
+    const sort_by = event.target.value;
+
     fetchArticles(sort_by);
   };
-  // componentDidUpdate(prevProps, prevState) {
-  //   const { sort_by } = this.state;
-  //   if (prevState.sort_by !== this.state.sort_by) {
-  //     sortArticleBy(sort_by).then(response => {
-  //       this.setState({
-  //         articles: response
-  //       });
-  //     });
-  //   }
-  // }
 }
-
 export default SortBy;

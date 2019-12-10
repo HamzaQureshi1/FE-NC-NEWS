@@ -10,7 +10,7 @@ class ArticlesList extends Component {
 
   render() {
     const { topic } = this.props;
-    // console.log(topic, "topic inside render");
+
     return (
       <div>
         <SortBy function={this.fetchArticles} />
@@ -50,7 +50,7 @@ class ArticlesList extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
     if (prevProps.topic !== topic) {
-      this.fetchArticles();
+      this.fetchArticles(topic);
     }
   }
 }
