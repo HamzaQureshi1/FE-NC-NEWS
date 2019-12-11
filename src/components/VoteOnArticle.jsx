@@ -4,7 +4,7 @@ class VoteOnArticle extends Component {
   render() {
     return (
       <div>
-        <button type="button" onClick={this.handleChange}>
+        <button type="button" onClick={this.handleChange} value={1}>
           Upvote Article
         </button>
       </div>
@@ -12,8 +12,8 @@ class VoteOnArticle extends Component {
   }
   handleChange = event => {
     const updateVotesOnArticle = this.props.function;
-    
-    updateVotesOnArticle();
+    const { value } = event.target;
+    updateVotesOnArticle(value);
   };
 }
 

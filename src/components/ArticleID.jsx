@@ -40,11 +40,14 @@ class ArticleID extends Component {
     );
   }
 
-  updateVotesOnArticle = () => {
+  updateVotesOnArticle = value => {
     const { article_id } = this.props;
-    increaseVotesOnArticle(article_id).then(response => {
-      // this.setState({ article: response });
-      console.log(response.votes);
+    increaseVotesOnArticle(article_id, value);
+    this.setState(function(prevState) {
+      const newVotes = prevState.article.votes + +value;
+      const article = { ...prevState.article };
+      article.votes = newVotes;
+      return { article };
     });
   };
 
@@ -54,6 +57,16 @@ class ArticleID extends Component {
       this.setState({ article: response, isLoading: false });
     });
   }
+
+  // updateVotesOnArticle = value => {
+  //   const { article_id } = this.props;
+  //   increaseVotesOnArticle(article_id, value).then(response => {
+  //     console.log(response);
+  //     this.setState(function(prevState) {
+  //       return prevState.article.votes + response.votes;
+  //     });
+  //   });
+  // };
 }
 
 export default ArticleID;

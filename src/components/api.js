@@ -23,14 +23,11 @@ export const getSingleArticle = article_id => {
     });
 };
 
-export const increaseVotesOnArticle = article_id => {
+export const increaseVotesOnArticle = (article_id, value) => {
   return axios
     .patch(`https://hamza-nc-news.herokuapp.com/api/articles/${article_id}`, {
-      data: {
-        inc_votes: 10
-      }
+      inc_votes: value
     })
-
     .then(response => {
       return response.data.article;
     });
