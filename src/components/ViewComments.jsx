@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Link } from "react";
 import { getComments } from "./api";
+import VoteOnComments from "./VoteOnComments";
+import PostComment from "./PostComment";
 
 class ViewComments extends Component {
   state = {
@@ -23,11 +25,12 @@ class ViewComments extends Component {
                 Created at:{comment.created_at}
                 <br></br>
                 Comment id: {comment.comment_id}
+                <VoteOnComments />
               </li>
             );
           })}
         </ul>
-        ;
+        <PostComment />
       </div>
     );
   }

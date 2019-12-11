@@ -42,3 +42,11 @@ export const getComments = article_id => {
       return response.data.comments;
     });
 };
+
+export const changeVotesOnComment = comment_id => {
+  return axios
+    .get(`https://hamza-nc-news.herokuapp.com/api/comments/${comment_id}`)
+    .then(response => {
+      return response.data.comment;
+    });
+};

@@ -3,6 +3,7 @@ import { getArticles } from "./api";
 import { Link } from "@reach/router";
 import SortBy from "./SortBy";
 import IsLoading from "./IsLoading";
+import ViewComments from "./ViewComments";
 
 class ArticlesList extends Component {
   state = {
@@ -31,9 +32,7 @@ class ArticlesList extends Component {
                 <br></br>
                 Votes:{article.votes}
                 <br></br>
-                <Link to={`/articles/${article.article_id}`}>
-                  Article_id:{article.article_id}
-                </Link>
+                <ViewComments />
               </li>
             );
           })}
