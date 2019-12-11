@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { getSingleArticle } from "./api";
-import { increaseVotesOnArticle } from "./api";
+import { changeVotesOnArticle } from "./api";
+// import { getComments } from "./api";
 import IsLoading from "./IsLoading";
 import VoteOnArticle from "./VoteOnArticle";
+import ViewComments from "./ViewComments";
 
 class ArticleID extends Component {
   state = {
     article: [],
-    isLoading: true
+    isLoading: true,
+    comments: []
   };
   render() {
     const { article_id } = this.props;
@@ -36,13 +39,14 @@ class ArticleID extends Component {
           </li>
         </ul>
         <VoteOnArticle function={this.updateVotesOnArticle} />
+        <ViewComments article_id={this.props.article_id} />
       </div>
     );
   }
 
   updateVotesOnArticle = value => {
     const { article_id } = this.props;
-    increaseVotesOnArticle(article_id, value);
+    changeVotesOnArticle(article_id, value);
     this.setState(function(prevState) {
       const newVotes = prevState.article.votes + +value;
       const article = { ...prevState.article };
@@ -50,6 +54,13 @@ class ArticleID extends Component {
       return { article };
     });
   };
+
+  // fetchComments = () => {
+  //   const { article_id } = this.props;
+  //   getComments(article_id).then(response => {this.setState({
+  //     comments
+  //   })});
+  // };
 
   componentDidMount() {
     const { article_id } = this.props;

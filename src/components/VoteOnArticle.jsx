@@ -7,6 +7,9 @@ class VoteOnArticle extends Component {
         <button type="button" onClick={this.handleChange} value={1}>
           Upvote Article
         </button>
+        <button type="button" onClick={this.handleChange} value={-1}>
+          Downvote Article
+        </button>
       </div>
     );
   }

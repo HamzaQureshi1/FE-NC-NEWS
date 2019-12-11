@@ -23,12 +23,22 @@ export const getSingleArticle = article_id => {
     });
 };
 
-export const increaseVotesOnArticle = (article_id, value) => {
+export const changeVotesOnArticle = (article_id, value) => {
   return axios
     .patch(`https://hamza-nc-news.herokuapp.com/api/articles/${article_id}`, {
       inc_votes: value
     })
     .then(response => {
       return response.data.article;
+    });
+};
+
+export const getComments = article_id => {
+  return axios
+    .get(
+      `https://hamza-nc-news.herokuapp.com/api/articles/${article_id}/comments`
+    )
+    .then(response => {
+      return response.data.comments;
     });
 };
