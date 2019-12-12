@@ -11,10 +11,20 @@ class VoteOnComments extends Component {
       <div>
         <div>
           Votes:{votes}
-          <button type="button" onClick={this.handleChange} value={1}>
+          <button
+            ref="button"
+            type="button"
+            onClick={this.handleChange}
+            value={1}
+          >
             Upvote Comment
           </button>
-          <button type="button" onClick={this.handleChange} value={-1}>
+          <button
+            ref="button1"
+            type="button"
+            onClick={this.handleChange1}
+            value={-1}
+          >
             Downvote Comment
           </button>
         </div>
@@ -22,6 +32,18 @@ class VoteOnComments extends Component {
     );
   }
   handleChange = event => {
+    this.refs.button.setAttribute("disabled", "disabled");
+
+    const updateVotesOnComment = this.props.function;
+    const comment_id = this.props.comment_id;
+    const { value } = event.target;
+    const votes = this.state.votes;
+    this.setState({ votes: this.state.votes + +value });
+
+    updateVotesOnComment(value, comment_id);
+  };
+  handleChange1 = event => {
+    this.refs.button1.setAttribute("disabled", "disabled");
     const updateVotesOnComment = this.props.function;
     const comment_id = this.props.comment_id;
     const { value } = event.target;
