@@ -45,13 +45,22 @@ class ViewComments extends Component {
   }
   addAComment = (article_id, body, username) => {
     postAComment(article_id, body, username).then(response => {
-      this.setState({ comments: response });
+      this.setState(state => {
+        return { comments: [response, ...state.comments] };
+      });
     });
   };
 
   updateVotesOnComment(value, comment_id) {
     changeVotesOnComment(value, comment_id);
   }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.comments.comment_id !== this.state.comments.comment_id) {
+  //     this.addAComment();
+  //   }
+  //}
+
   componentDidMount() {
     const { article_id } = this.props;
     getComments(article_id).then(response => {

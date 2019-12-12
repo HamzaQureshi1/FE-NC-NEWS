@@ -33,7 +33,7 @@ class PostComment extends Component {
     const { article_id } = this.props;
     const { body } = this.state;
     const { username } = this.state;
-    addAComment(article_id, body, username);
+    addAComment(article_id, body, username)
   };
 }
 
