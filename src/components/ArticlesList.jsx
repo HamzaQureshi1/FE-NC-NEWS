@@ -32,7 +32,9 @@ class ArticlesList extends Component {
                 <br></br>
                 Votes:{article.votes}
                 <br></br>
-                <ViewComments />
+                <Link to={`/articles/${article.article_id}`}>
+                  Article_id:{article.article_id}
+                </Link>
               </li>
             );
           })}

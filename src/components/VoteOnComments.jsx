@@ -1,22 +1,35 @@
-import React from "react";
+import React, { Component } from "react";
 
-const VoteOnComments = () => {
-  return (
-    <div>
+class VoteOnComments extends Component {
+  state = {
+    votes: this.props.votes
+  };
+
+  render() {
+    const votes = this.state.votes;
+    return (
       <div>
-        <button type="button" onClick={handleChange} value={1}>
-          Upvote Comment
-        </button>
-        <button type="button" onClick={handleChange} value={-1}>
-          Downvote Comment
-        </button>
+        <div>
+          Votes:{votes}
+          <button type="button" onClick={this.handleChange} value={1}>
+            Upvote Comment
+          </button>
+          <button type="button" onClick={this.handleChange} value={-1}>
+            Downvote Comment
+          </button>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+  handleChange = event => {
+    const updateVotesOnComment = this.props.function;
+    const comment_id = this.props.comment_id;
+    const { value } = event.target;
+    const votes = this.state.votes;
+    this.setState({ votes: this.state.votes + +value });
 
-const handleChange = event => {
-  console.log(1);
-};
+    updateVotesOnComment(value, comment_id);
+  };
+}
 
 export default VoteOnComments;
