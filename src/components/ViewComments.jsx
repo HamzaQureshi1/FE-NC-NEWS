@@ -1,5 +1,6 @@
-import React, { Component, Link } from "react";
-import { getComments, changeVotesOnComment } from "./api";
+import React, { Component } from "react";
+// import { Link } from "@reach/router";
+import { getComments, changeVotesOnComment, postAComment } from "./api";
 import VoteOnComments from "./VoteOnComments";
 import PostComment from "./PostComment";
 
@@ -12,6 +13,10 @@ class ViewComments extends Component {
     return (
       <div>
         <h1>COMMENTS</h1>
+        <PostComment
+          article_id={this.props.article_id}
+          function={this.addAComment}
+        />
         <ul>
           {this.state.comments.map(comment => {
             return (
@@ -34,14 +39,18 @@ class ViewComments extends Component {
             );
           })}
         </ul>
-        <PostComment />
+        {/* <Link to={`/articles/${article_id}/postacomment`}>Post a comment</Link> */}
       </div>
     );
   }
+  addAComment = (article_id, body, username) => {
+    postAComment(article_id, body, username).then(response => {
+      this.setState({ comments: response });
+    });
+  };
+
   updateVotesOnComment(value, comment_id) {
-    console.log(value, comment_id);
     changeVotesOnComment(value, comment_id);
-    
   }
   componentDidMount() {
     const { article_id } = this.props;

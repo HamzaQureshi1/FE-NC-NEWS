@@ -1,38 +1,40 @@
-import React from "react";
+import { postAComment } from "./api";
+import React, { Component } from "react";
 
-const PostComment = () => {
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Post a new comment
-        <input
-          type="text"
-          // value={this.state.value}
-          onChange={handleChange}
-        />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
-  );
-};
+class PostComment extends Component {
+  state = {
+    body: "",
+    username: ""
+  };
+  render() {
+    const addAComment = this.props.function;
 
-const handleSubmit = event => {
-  console.log(event);
-};
+    const article_id = this.props.article_id;
+    // console.log(article_id);
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Post a new comment
+          <input type="text" onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
 
-const handleChange = () => {
-  console.log("changed");
-};
+  handleChange = event => {
+    const words = event.target.value;
+    this.setState({ body: words, username: "jessjelly" });
+  };
+
+  handleSubmit = event => {
+    const addAComment = this.props.function;
+    event.preventDefault();
+    const { article_id } = this.props;
+    const { body } = this.state;
+    const { username } = this.state;
+    addAComment(article_id, body, username);
+  };
+}
 
 export default PostComment;
-
-
-//   handleChange(event) {
-//     this.setState({ value: event.target.value });
-//   }
-
-//   handleSubmit(event) {
-//     alert("A name was submitted: " + this.state.value);
-//     event.preventDefault();
-//
-// }

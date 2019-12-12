@@ -15,7 +15,6 @@ export const getArticles = (topic, sort_by) => {
 };
 
 export const getSingleArticle = article_id => {
-  console.log(article_id);
   return axios
     .get(`https://hamza-nc-news.herokuapp.com/api/articles/${article_id}`)
     .then(response => {
@@ -48,6 +47,21 @@ export const changeVotesOnComment = (value, comment_id) => {
     .patch(`https://hamza-nc-news.herokuapp.com/api/comments/${comment_id}`, {
       inc_votes: value
     })
+    .then(response => {
+      return response.data.comment;
+    });
+};
+
+export const postAComment = (article_id, body, username) => {
+  console.log(article_id, body, username);
+  return axios
+    .post(
+      `https://hamza-nc-news.herokuapp.com/api/articles/${article_id}/comments`,
+      {
+        username,
+        body
+      }
+    )
     .then(response => {
       return response.data.comment;
     });

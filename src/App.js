@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import { Router } from "@reach/router";
 import ArticlesList from "./components/ArticlesList";
 import ArticleID from "./components/ArticleID";
-
+import PostComment from "./components/PostComment";
 function App() {
   return (
     <div>
@@ -16,6 +16,7 @@ function App() {
           <ArticleID path="/articles/:article_id" />
           <ArticlesList path="/articles" />
           <ArticlesList path="/topics/:topic/articles" />
+          <PostComment path="articles/:article_id/postacomment" />
         </Router>
       </div>
     </div>
