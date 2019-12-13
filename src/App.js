@@ -7,6 +7,7 @@ import ArticleID from "./components/ArticleID";
 import PostComment from "./components/PostComment";
 import Error from "./components/Error";
 import ViewComments from "./components/ViewComments";
+import "./App.css";
 function App() {
   return (
     <div>

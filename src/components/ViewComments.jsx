@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { Link } from "@reach/router";
 import Error from "./Error";
 import IsLoading from "./IsLoading";
+import "../App.css";
 import {
   getComments,
   changeVotesOnComment,
@@ -24,41 +25,42 @@ class ViewComments extends Component {
     if (this.state.username) {
       return (
         <div>
-          <h1>COMMENTS</h1>
+          <h1 align="center">COMMENTS</h1>
           <PostComment
             article_id={this.props.article_id}
             function={this.addAComment}
             username={this.state.username}
           />
-
-          <ul>
-            {this.state.comments.map(comment => {
-              return (
-                <li key={comment.comment_id}>
-                  Author:{comment.author}
-                  <br></br>
-                  Body:{comment.body}
-                  <br></br>
-                  Created at:{comment.created_at}
-                  <br></br>
-                  Comment id: {comment.comment_id}
-                  <VoteOnComments
-                    votes={comment.votes}
-                    function={this.updateVotesOnComment}
-                    comment_id={comment.comment_id}
-                  />
-                  {comment.author === this.state.username ? (
-                    <DeleteComment
-                      author={comment.author}
+          <middler>
+            <ul>
+              {this.state.comments.map(comment => {
+                return (
+                  <li key={comment.comment_id}>
+                    Author:{comment.author}
+                    <br></br>
+                    Body:{comment.body}
+                    <br></br>
+                    Created at:{comment.created_at}
+                    <br></br>
+                    Comment id: {comment.comment_id}
+                    <VoteOnComments
+                      votes={comment.votes}
+                      function={this.updateVotesOnComment}
                       comment_id={comment.comment_id}
-                      username={this.state.username}
-                      delete={this.deleteAComment}
                     />
-                  ) : null}
-                </li>
-              );
-            })}
-          </ul>
+                    {comment.author === this.state.username ? (
+                      <DeleteComment
+                        author={comment.author}
+                        comment_id={comment.comment_id}
+                        username={this.state.username}
+                        delete={this.deleteAComment}
+                      />
+                    ) : null}
+                  </li>
+                );
+              })}
+            </ul>
+          </middler>
         </div>
       );
     } else {

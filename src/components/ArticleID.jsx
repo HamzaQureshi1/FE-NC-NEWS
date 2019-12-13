@@ -7,6 +7,7 @@ import IsLoading from "./IsLoading";
 import VoteOnArticle from "./VoteOnArticle";
 import ViewComments from "./ViewComments";
 import Error from "./Error";
+import "../App.css";
 
 class ArticleID extends Component {
   state = {
@@ -24,25 +25,31 @@ class ArticleID extends Component {
     if (this.state.isLoading) return <IsLoading />;
     return (
       <div>
-        <ul>
-          <li key={article.article_id}>
-            Article_id:{article.article_id}
-            <br></br>
-            Title: {article.title}
-            <br></br>
-            Body:{article.body}
-            <br></br>
-            Votes:{article.votes} <br></br>
-            Topic:{article.topic}
-            <br></br>
-            Author:{article.author}
-            <br></br>
-            Created_at:{article.created_at}
-            <br></br>
-            Comment_Count:{article.comment_count}
-          </li>
-        </ul>
-        <VoteOnArticle function={this.updateVotesOnArticle} />
+        <h1 align="center">ARTICLE</h1>
+        <div className="center">
+          <ul>
+            <li key={article.article_id}>
+              Article_id:{article.article_id}
+              <br></br>
+              Title: {article.title}
+              <br></br>
+              Body:{article.body}
+              <br></br>
+              Votes:{article.votes} <br></br>
+              Topic:{article.topic}
+              <br></br>
+              Author:{article.author}
+              <br></br>
+              Created_at:{article.created_at}
+              <br></br>
+              Comment_Count:{article.comment_count}
+            </li>
+          </ul>
+        </div>
+        <h1 align="center">
+          <VoteOnArticle function={this.updateVotesOnArticle} />
+        </h1>
+
         <ViewComments article_id={this.props.article_id} />
       </div>
     );

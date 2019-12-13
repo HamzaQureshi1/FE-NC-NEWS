@@ -5,6 +5,7 @@ import SortBy from "./SortBy";
 import IsLoading from "./IsLoading";
 import ViewComments from "./ViewComments";
 import Error from "./Error";
+import "../App.css";
 
 class ArticlesList extends Component {
   state = {
@@ -20,25 +21,28 @@ class ArticlesList extends Component {
     }
     if (this.state.err) return <Error err={this.state.err} />;
     return (
-      <div>
+      <div className="center">
+        {/* <h1>{this.state.articles[0].topic}</h1> */}
         <SortBy function={this.fetchArticles} />
-        <br></br> ARTICLES
+        <br></br>
         <ul>
           {this.state.articles.map(article => {
             return (
-              <li key={article.article_id}>
-                Author:{article.author} <br></br>
-                Created at:{article.created_at} <br></br>
-                Title: {article.title} <br></br>
-                Topic:{article.topic} <br></br>
-                Comment_count:{article.comment_count}
-                <br></br>
-                Votes:{article.votes}
-                <br></br>
-                <Link to={`/articles/${article.article_id}`}>
-                  Article_id:{article.article_id}
-                </Link>
-              </li>
+              <div>
+                <li key={article.article_id}>
+                  Author:{article.author} <br></br>
+                  Created at:{article.created_at} <br></br>
+                  Title: {article.title} <br></br>
+                  Topic:{article.topic} <br></br>
+                  Comment_count:{article.comment_count}
+                  <br></br>
+                  Votes:{article.votes}
+                  <br></br>
+                  <Link to={`/articles/${article.article_id}`}>
+                    Article_id:{article.article_id}
+                  </Link>
+                </li>
+              </div>
             );
           })}
         </ul>

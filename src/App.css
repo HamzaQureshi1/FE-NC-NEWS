@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+.DottedBox {
+  margin: 40px;
+  border: 5px dotted rgb(251, 248, 249);
+}
+.primary {
+  color: rgb(27, 11, 11);
+}
+body {
+  background-color: rgb();
+}
+
+.center {
+  margin: auto;
+  width: 60%;
+  border: 5px solid #000000;
+  padding: 1px;
+}
+
+middler {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: bottom;
+}
