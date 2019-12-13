@@ -53,7 +53,7 @@ export const changeVotesOnComment = (value, comment_id) => {
 };
 
 export const postAComment = (article_id, body, username) => {
-  console.log(article_id, body, username);
+  // console.log(article_id, body, username);
   return axios
     .post(
       `https://hamza-nc-news.herokuapp.com/api/articles/${article_id}/comments`,
@@ -62,6 +62,14 @@ export const postAComment = (article_id, body, username) => {
         body
       }
     )
+    .then(response => {
+      return response.data.comment;
+    });
+};
+
+export const removeComment = comment_id => {
+  return axios
+    .delete(`https://hamza-nc-news.herokuapp.com/api/comments/${comment_id}`)
     .then(response => {
       return response.data.comment;
     });

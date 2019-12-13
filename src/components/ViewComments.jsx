@@ -1,47 +1,98 @@
 import React, { Component } from "react";
 // import { Link } from "@reach/router";
-import { getComments, changeVotesOnComment, postAComment } from "./api";
+import {
+  getComments,
+  changeVotesOnComment,
+  postAComment,
+  removeComment
+} from "./api";
 import VoteOnComments from "./VoteOnComments";
 import PostComment from "./PostComment";
+import DeleteComment from "./DeleteComment";
 
 class ViewComments extends Component {
   state = {
-    comments: []
+    comments: [],
+    username: "jessjelly"
   };
   render() {
     const { article_id } = this.props;
-    return (
-      <div>
-        <h1>COMMENTS</h1>
-        <PostComment
-          article_id={this.props.article_id}
-          function={this.addAComment}
-        />
-        <ul>
-          {this.state.comments.map(comment => {
-            return (
-              <li key={comment.comment_id}>
-                Author:{comment.author}
-                <br></br>
-                Body:{comment.body}
-                <br></br>
-                {/* Votes: {comment.votes} */}
-                {/* <br></br> */}
-                Created at:{comment.created_at}
-                <br></br>
-                Comment id: {comment.comment_id}
-                <VoteOnComments
-                  votes={comment.votes}
-                  function={this.updateVotesOnComment}
-                  comment_id={comment.comment_id}
-                />
-              </li>
-            );
-          })}
-        </ul>
-        {/* <Link to={`/articles/${article_id}/postacomment`}>Post a comment</Link> */}
-      </div>
-    );
+    if (this.state.username) {
+      return (
+        <div>
+          <h1>COMMENTS</h1>
+          <PostComment
+            article_id={this.props.article_id}
+            function={this.addAComment}
+            username={this.state.username}
+          />
+
+          <ul>
+            {this.state.comments.map(comment => {
+              return (
+                <li key={comment.comment_id}>
+                  Author:{comment.author}
+                  <br></br>
+                  Body:{comment.body}
+                  <br></br>
+                  Created at:{comment.created_at}
+                  <br></br>
+                  Comment id: {comment.comment_id}
+                  <VoteOnComments
+                    votes={comment.votes}
+                    function={this.updateVotesOnComment}
+                    comment_id={comment.comment_id}
+                  />
+                  {comment.author === this.state.username ? (
+                    <DeleteComment
+                      author={comment.author}
+                      comment_id={comment.comment_id}
+                      username={this.state.username}
+                      delete={this.deleteAComment}
+                    />
+                  ) : null}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {/* <h1>COMMENTS</h1>
+          <PostComment
+            article_id={this.props.article_id}
+            function={this.addAComment}
+            username={this.state.username}
+          />
+
+          <DeleteComment /> */}
+          <ul>
+            {this.state.comments.map(comment => {
+              return (
+                <li key={comment.comment_id}>
+                  Author:{comment.author}
+                  <br></br>
+                  Body:{comment.body}
+                  <br></br>
+                  {/* Votes: {comment.votes} */}
+                  {/* <br></br> */}
+                  Created at:{comment.created_at}
+                  <br></br>
+                  Comment id: {comment.comment_id}
+                  <VoteOnComments
+                    votes={comment.votes}
+                    function={this.updateVotesOnComment}
+                    comment_id={comment.comment_id}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    }
   }
   addAComment = (article_id, body, username) => {
     postAComment(article_id, body, username).then(response => {
@@ -49,6 +100,20 @@ class ViewComments extends Component {
         return { comments: [response, ...state.comments] };
       });
     });
+  };
+
+  deleteAComment = (comment_id, author) => {
+    if (author === this.state.username) {
+      removeComment(comment_id).then(response => {
+        this.setState(state => {
+          return {
+            comments: state.comments.filter(
+              comment => comment.comment_id !== comment_id
+            )
+          };
+        });
+      });
+    }
   };
 
   updateVotesOnComment(value, comment_id) {
