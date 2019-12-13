@@ -15,7 +15,12 @@ class PostComment extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Post a new comment
-          <input type="text" onChange={this.handleChange} />
+          <input
+            type="text"
+            required
+            onChange={this.handleChange}
+            value={this.state.body}
+          />
         </label>
         <input type="submit" value="Submit" />
       </form>
@@ -36,6 +41,7 @@ class PostComment extends Component {
     const { username } = this.state;
 
     addAComment(article_id, body, username);
+    this.setState({ body: "" });
   };
 }
 

@@ -4,18 +4,21 @@ import { Link } from "@reach/router";
 import SortBy from "./SortBy";
 import IsLoading from "./IsLoading";
 import ViewComments from "./ViewComments";
+import Error from "./Error";
 
 class ArticlesList extends Component {
   state = {
     articles: [],
     isLoading: true,
-    sort_by: "created_at"
+    sort_by: "created_at",
+    err: null
   };
 
   render() {
     if (this.state.isLoading) {
       return <IsLoading />;
     }
+    if (this.state.err) return <Error err={this.state.err} />;
     return (
       <div>
         <SortBy function={this.fetchArticles} />
@@ -46,9 +49,20 @@ class ArticlesList extends Component {
   fetchArticles = sort_by => {
     const { topic } = this.props;
 
-    getArticles(topic, sort_by).then(response => {
-      this.setState({ articles: response, isLoading: false, sort_by: sort_by });
-    });
+    getArticles(topic, sort_by)
+      .then(response => {
+        this.setState({
+          articles: response,
+          isLoading: false,
+          sort_by: sort_by
+        });
+      })
+      .catch(({ response }) =>
+        this.setState({
+          err: { status: response.status, msg: response.data.msg },
+          isLoading: false
+        })
+      );
   };
   componentDidMount() {
     const { topic } = this.props;

@@ -6,18 +6,21 @@ import { changeVotesOnArticle } from "./api";
 import IsLoading from "./IsLoading";
 import VoteOnArticle from "./VoteOnArticle";
 import ViewComments from "./ViewComments";
+import Error from "./Error";
 
 class ArticleID extends Component {
   state = {
     article: [],
     isLoading: true,
-    comments: []
+    comments: [],
+    err: null
   };
   render() {
     const { article_id } = this.props;
     const { article } = this.state;
     const { votes } = this.state.article;
 
+    if (this.state.err) return <Error err={this.state.err} />;
     if (this.state.isLoading) return <IsLoading />;
     return (
       <div>
@@ -65,9 +68,16 @@ class ArticleID extends Component {
 
   componentDidMount() {
     const { article_id } = this.props;
-    getSingleArticle(article_id).then(response => {
-      this.setState({ article: response, isLoading: false });
-    });
+    getSingleArticle(article_id)
+      .then(response => {
+        this.setState({ article: response, isLoading: false });
+      })
+      .catch(({ response }) =>
+        this.setState({
+          err: { status: response.status, msg: response.data.msg },
+          isLoading: false
+        })
+      );
   }
 
   // updateVotesOnArticle = value => {
