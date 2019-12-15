@@ -66,14 +66,7 @@ class ViewComments extends Component {
     } else {
       return (
         <div>
-          {/* <h1>COMMENTS</h1>
-          <PostComment
-            article_id={this.props.article_id}
-            function={this.addAComment}
-            username={this.state.username}
-          />
-
-          <DeleteComment /> */}
+       
           <ul>
             {this.state.comments.map(comment => {
               return (
@@ -82,8 +75,7 @@ class ViewComments extends Component {
                   <br></br>
                   Body:{comment.body}
                   <br></br>
-                  {/* Votes: {comment.votes} */}
-                  {/* <br></br> */}
+                 
                   Created at:{comment.created_at}
                   <br></br>
                   Comment id: {comment.comment_id}
@@ -109,7 +101,7 @@ class ViewComments extends Component {
   };
 
   deleteAComment = (comment_id, author) => {
-    // if (author === this.state.username) {
+    
     removeComment(comment_id).then(response => {
       this.setState(state => {
         return {
@@ -126,12 +118,7 @@ class ViewComments extends Component {
     changeVotesOnComment(value, comment_id);
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.comments.comment_id !== this.state.comments.comment_id) {
-  //     this.addAComment();
-  //   }
-  //}
-
+ 
   componentDidMount() {
     const { article_id } = this.props;
     getComments(article_id)

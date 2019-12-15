@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import { getSingleArticle } from "./api";
 import { changeVotesOnArticle } from "./api";
-// import { getComments } from "./api";
 import IsLoading from "./IsLoading";
 import VoteOnArticle from "./VoteOnArticle";
 import ViewComments from "./ViewComments";
@@ -66,12 +65,6 @@ class ArticleID extends Component {
     });
   };
 
-  // fetchComments = () => {
-  //   const { article_id } = this.props;
-  //   getComments(article_id).then(response => {this.setState({
-  //     comments
-  //   })});
-  // };
 
   componentDidMount() {
     const { article_id } = this.props;
@@ -87,15 +80,7 @@ class ArticleID extends Component {
       );
   }
 
-  // updateVotesOnArticle = value => {
-  //   const { article_id } = this.props;
-  //   increaseVotesOnArticle(article_id, value).then(response => {
-  //     console.log(response);
-  //     this.setState(function(prevState) {
-  //       return prevState.article.votes + response.votes;
-  //     });
-  //   });
-  // };
+  
 }
 
 export default ArticleID;

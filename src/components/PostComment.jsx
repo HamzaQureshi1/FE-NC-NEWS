@@ -10,7 +10,7 @@ class PostComment extends Component {
     const addAComment = this.props.function;
 
     const article_id = this.props.article_id;
-    // console.log(article_id);
+    
     return (
       <form onSubmit={this.handleSubmit}>
         <label>

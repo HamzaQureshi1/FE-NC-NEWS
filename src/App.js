@@ -20,7 +20,7 @@ function App() {
           <ArticleID path="/articles/:article_id" />
           <ArticlesList path="/articles" />
           <ArticlesList path="/topics/:topic/articles" />
-          {/* <PostComment path="articles/:article_id/postacomment" /> */}
+
           <Error default err={{ status: 404, msg: "route not found" }} />
           <ViewComments path="articles/:article_id/comments" />
         </Router>

@@ -22,7 +22,6 @@ class ArticlesList extends Component {
     if (this.state.err) return <Error err={this.state.err} />;
     return (
       <div className="center">
-        {/* <h1>{this.state.articles[0].topic}</h1> */}
         <SortBy function={this.fetchArticles} />
         <br></br>
         <ul>
