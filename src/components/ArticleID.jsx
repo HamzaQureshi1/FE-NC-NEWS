@@ -6,7 +6,7 @@ import IsLoading from "./IsLoading";
 import VoteOnArticle from "./VoteOnArticle";
 import ViewComments from "./ViewComments";
 import Error from "./Error";
-import "../App.css";
+
 
 class ArticleID extends Component {
   state = {
@@ -23,9 +23,9 @@ class ArticleID extends Component {
     if (this.state.err) return <Error err={this.state.err} />;
     if (this.state.isLoading) return <IsLoading />;
     return (
-      <div>
-        <h1 align="center">ARTICLE</h1>
-        <div className="center">
+      <div >
+        <h1>ARTICLE</h1>
+        <div>
           <ul>
             <li key={article.article_id}>
               Article_id:{article.article_id}
@@ -45,7 +45,7 @@ class ArticleID extends Component {
             </li>
           </ul>
         </div>
-        <h1 align="center">
+        <h1 >
           <VoteOnArticle function={this.updateVotesOnArticle} />
         </h1>
 
@@ -65,7 +65,6 @@ class ArticleID extends Component {
     });
   };
 
-
   componentDidMount() {
     const { article_id } = this.props;
     getSingleArticle(article_id)
@@ -79,8 +78,6 @@ class ArticleID extends Component {
         })
       );
   }
-
-  
 }
 
 export default ArticleID;

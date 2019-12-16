@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "@reach/router";
-import "../App.css";
+
 
 const NavBar = () => {
   return (
-    <middler>
+    <middler >
       <nav>
         <Link to="/articles">ALL ARTICLES</Link> |
         <Link to="/topics/cooking/articles">COOKING</Link> |

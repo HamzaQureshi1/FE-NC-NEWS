@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import { Link } from "@reach/router";
 import Error from "./Error";
 import IsLoading from "./IsLoading";
-import "../App.css";
+
 import {
   getComments,
   changeVotesOnComment,
@@ -24,14 +24,14 @@ class ViewComments extends Component {
     if (this.state.err) return <Error err={this.state.err} />;
     if (this.state.username) {
       return (
-        <div>
-          <h1 align="center">COMMENTS</h1>
+        <div >
+          <h1 >COMMENTS</h1>
           <PostComment
             article_id={this.props.article_id}
             function={this.addAComment}
             username={this.state.username}
           />
-          <middler>
+          
             <ul>
               {this.state.comments.map(comment => {
                 return (
@@ -60,13 +60,12 @@ class ViewComments extends Component {
                 );
               })}
             </ul>
-          </middler>
+          
         </div>
       );
     } else {
       return (
         <div>
-       
           <ul>
             {this.state.comments.map(comment => {
               return (
@@ -75,7 +74,6 @@ class ViewComments extends Component {
                   <br></br>
                   Body:{comment.body}
                   <br></br>
-                 
                   Created at:{comment.created_at}
                   <br></br>
                   Comment id: {comment.comment_id}
@@ -101,7 +99,6 @@ class ViewComments extends Component {
   };
 
   deleteAComment = (comment_id, author) => {
-    
     removeComment(comment_id).then(response => {
       this.setState(state => {
         return {
@@ -118,7 +115,8 @@ class ViewComments extends Component {
     changeVotesOnComment(value, comment_id);
   }
 
- 
+  // changeVotesOnComment(value, comment_id) 
+
   componentDidMount() {
     const { article_id } = this.props;
     getComments(article_id)

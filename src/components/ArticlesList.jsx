@@ -5,7 +5,7 @@ import SortBy from "./SortBy";
 import IsLoading from "./IsLoading";
 import ViewComments from "./ViewComments";
 import Error from "./Error";
-import "../App.css";
+
 
 class ArticlesList extends Component {
   state = {
@@ -21,7 +21,7 @@ class ArticlesList extends Component {
     }
     if (this.state.err) return <Error err={this.state.err} />;
     return (
-      <div className="center">
+      <div >
         <SortBy function={this.fetchArticles} />
         <br></br>
         <ul>

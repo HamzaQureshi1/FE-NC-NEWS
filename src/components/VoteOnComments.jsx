@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 class VoteOnComments extends Component {
   state = {
-    votes: this.props.votes
+    votes: this.props.votes,
+    clicked: 1
   };
 
   render() {
@@ -16,6 +17,7 @@ class VoteOnComments extends Component {
             type="button"
             onClick={this.handleChange}
             value={1}
+            disabled={this.state.clicked === "1" ? true : false}
           >
             Upvote Comment
           </button>
@@ -24,6 +26,7 @@ class VoteOnComments extends Component {
             type="button"
             onClick={this.handleChange1}
             value={-1}
+            disabled={this.state.clicked === "-1" ? true : false}
           >
             Downvote Comment
           </button>
@@ -32,8 +35,14 @@ class VoteOnComments extends Component {
     );
   }
   handleChange = event => {
-    this.refs.button.setAttribute("disabled", "disabled");
+    // this.state.clicked = true;
+    // if (this.state.clicked === true)
+    //   this.refs.button.setAttribute("disabled", "disabled");
+    // this.refs.button.setAttribute("enabled", "enabled");
 
+    // this.state.clicked = false;
+    this.setState({ clicked: event.target.value });
+    console.log(this.state.clicked);
     const updateVotesOnComment = this.props.function;
     const comment_id = this.props.comment_id;
     const { value } = event.target;
@@ -43,7 +52,8 @@ class VoteOnComments extends Component {
     updateVotesOnComment(value, comment_id);
   };
   handleChange1 = event => {
-    this.refs.button1.setAttribute("disabled", "disabled");
+    // this.refs.button1.setAttribute("disabled", "disabled");
+    this.setState({ clicked: event.target.value });
     const updateVotesOnComment = this.props.function;
     const comment_id = this.props.comment_id;
     const { value } = event.target;
