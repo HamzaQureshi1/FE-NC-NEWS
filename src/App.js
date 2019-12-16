@@ -7,13 +7,14 @@ import ArticleID from "./components/ArticleID";
 import PostComment from "./components/PostComment";
 import Error from "./components/Error";
 import ViewComments from "./components/ViewComments";
+import IsLoggedIn from "./components/IsLoggedIn";
 
 function App() {
   return (
     <div id="container">
       <Header class="one" />
       <NavBar />
-
+      <IsLoggedIn />
       <div>
         <Router>
           <ArticlesList path="/" />

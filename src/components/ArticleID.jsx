@@ -7,7 +7,6 @@ import VoteOnArticle from "./VoteOnArticle";
 import ViewComments from "./ViewComments";
 import Error from "./Error";
 
-
 class ArticleID extends Component {
   state = {
     article: [],
@@ -22,9 +21,15 @@ class ArticleID extends Component {
 
     if (this.state.err) return <Error err={this.state.err} />;
     if (this.state.isLoading) return <IsLoading />;
+    const mystyle = {
+      color: "black",
+      backgroundColor: "DodgerBlue",
+      padding: "10px",
+      fontFamily: "Arial"
+    };
     return (
-      <div >
-        <h1>ARTICLE</h1>
+      <div>
+        <h1 style={mystyle}>ARTICLE</h1>
         <div>
           <ul>
             <li key={article.article_id}>
@@ -45,7 +50,7 @@ class ArticleID extends Component {
             </li>
           </ul>
         </div>
-        <h1 >
+        <h1>
           <VoteOnArticle function={this.updateVotesOnArticle} />
         </h1>
 

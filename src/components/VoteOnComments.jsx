@@ -24,7 +24,7 @@ class VoteOnComments extends Component {
           <button
             ref="button1"
             type="button"
-            onClick={this.handleChange1}
+            onClick={this.handleChange}
             value={-1}
             disabled={this.state.clicked === "-1" ? true : false}
           >
@@ -42,26 +42,26 @@ class VoteOnComments extends Component {
 
     // this.state.clicked = false;
     this.setState({ clicked: event.target.value });
-    console.log(this.state.clicked);
+    
     const updateVotesOnComment = this.props.function;
     const comment_id = this.props.comment_id;
     const { value } = event.target;
     const votes = this.state.votes;
     this.setState({ votes: this.state.votes + +value });
-
+    // this.setState({ clicked: "-1" });
     updateVotesOnComment(value, comment_id);
   };
-  handleChange1 = event => {
-    // this.refs.button1.setAttribute("disabled", "disabled");
-    this.setState({ clicked: event.target.value });
-    const updateVotesOnComment = this.props.function;
-    const comment_id = this.props.comment_id;
-    const { value } = event.target;
-    const votes = this.state.votes;
-    this.setState({ votes: this.state.votes + +value });
+  //   handleChange1 = event => {
+  //     // this.refs.button1.setAttribute("disabled", "disabled");
+  //     this.setState({ clicked: event.target.value });
+  //     const updateVotesOnComment = this.props.function;
+  //     const comment_id = this.props.comment_id;
+  //     const { value } = event.target;
+  //     const votes = this.state.votes;
+  //     this.setState({ votes: this.state.votes + +value });
 
-    updateVotesOnComment(value, comment_id);
-  };
+  //     updateVotesOnComment(value, comment_id);
+  //   };
 }
 
 export default VoteOnComments;

@@ -1,17 +1,16 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-
 const NavBar = () => {
   return (
-    <middler >
+    <div>
       <nav>
         <Link to="/articles">ALL ARTICLES</Link> |
         <Link to="/topics/cooking/articles">COOKING</Link> |
         <Link to="/topics/coding/articles">CODING</Link> |
         <Link to="/topics/football/articles">FOOTBALL</Link>
       </nav>
-    </middler>
+    </div>
   );
 };
 

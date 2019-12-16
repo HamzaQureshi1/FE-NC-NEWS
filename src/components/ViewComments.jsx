@@ -20,47 +20,52 @@ class ViewComments extends Component {
     err: null
   };
   render() {
+    const mystyle = {
+      color: "black",
+      backgroundColor: "DodgerBlue",
+      padding: "10px",
+      fontFamily: "Arial"
+    };
     const { article_id } = this.props;
     if (this.state.err) return <Error err={this.state.err} />;
     if (this.state.username) {
       return (
-        <div >
-          <h1 >COMMENTS</h1>
+        <div style={mystyle}>
+          <h1>COMMENTS</h1>
           <PostComment
             article_id={this.props.article_id}
             function={this.addAComment}
             username={this.state.username}
           />
-          
-            <ul>
-              {this.state.comments.map(comment => {
-                return (
-                  <li key={comment.comment_id}>
-                    Author:{comment.author}
-                    <br></br>
-                    Body:{comment.body}
-                    <br></br>
-                    Created at:{comment.created_at}
-                    <br></br>
-                    Comment id: {comment.comment_id}
-                    <VoteOnComments
-                      votes={comment.votes}
-                      function={this.updateVotesOnComment}
+
+          <ul>
+            {this.state.comments.map(comment => {
+              return (
+                <li key={comment.comment_id}>
+                  Author:{comment.author}
+                  <br></br>
+                  Body:{comment.body}
+                  <br></br>
+                  Created at:{comment.created_at}
+                  <br></br>
+                  Comment id: {comment.comment_id}
+                  <VoteOnComments
+                    votes={comment.votes}
+                    function={this.updateVotesOnComment}
+                    comment_id={comment.comment_id}
+                  />
+                  {comment.author === this.state.username ? (
+                    <DeleteComment
+                      author={comment.author}
                       comment_id={comment.comment_id}
+                      username={this.state.username}
+                      delete={this.deleteAComment}
                     />
-                    {comment.author === this.state.username ? (
-                      <DeleteComment
-                        author={comment.author}
-                        comment_id={comment.comment_id}
-                        username={this.state.username}
-                        delete={this.deleteAComment}
-                      />
-                    ) : null}
-                  </li>
-                );
-              })}
-            </ul>
-          
+                  ) : null}
+                </li>
+              );
+            })}
+          </ul>
         </div>
       );
     } else {
@@ -115,7 +120,7 @@ class ViewComments extends Component {
     changeVotesOnComment(value, comment_id);
   }
 
-  // changeVotesOnComment(value, comment_id) 
+  // changeVotesOnComment(value, comment_id)
 
   componentDidMount() {
     const { article_id } = this.props;

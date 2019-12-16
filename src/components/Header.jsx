@@ -1,11 +1,10 @@
 import React from "react";
 
-
 const Header = () => {
   return (
-    <middler className="center">
+    <div className="center">
       <h1>Northcoders News</h1>
-    </middler>
+    </div>
   );
 };
 

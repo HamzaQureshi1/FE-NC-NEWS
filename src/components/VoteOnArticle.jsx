@@ -19,7 +19,7 @@ class VoteOnArticle extends Component {
         <button
           ref="button1"
           type="button"
-          onClick={this.handleChange1}
+          onClick={this.handleChange}
           value={-1}
           disabled={this.state.clicked === "-1" ? true : false}
         >
@@ -35,13 +35,13 @@ class VoteOnArticle extends Component {
     const { value } = event.target;
     updateVotesOnArticle(value);
   };
-  handleChange1 = event => {
-    this.setState({ clicked: event.target.value });
-    this.refs.button1.setAttribute("disabled", "disabled");
-    const updateVotesOnArticle = this.props.function;
-    const { value } = event.target;
-    updateVotesOnArticle(value);
-  };
+  // handleChange1 = event => {
+  //   this.setState({ clicked: event.target.value });
+  //   this.refs.button1.setAttribute("disabled", "disabled");
+  //   const updateVotesOnArticle = this.props.function;
+  //   const { value } = event.target;
+  //   updateVotesOnArticle(value);
+  // };
 }
 
 export default VoteOnArticle;

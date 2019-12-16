@@ -6,7 +6,6 @@ import IsLoading from "./IsLoading";
 import ViewComments from "./ViewComments";
 import Error from "./Error";
 
-
 class ArticlesList extends Component {
   state = {
     articles: [],
@@ -16,12 +15,17 @@ class ArticlesList extends Component {
   };
 
   render() {
+    const mystyle = {
+      color: "black",
+      backgroundColor: "DodgerBlue",
+      padding: "10px"
+    };
     if (this.state.isLoading) {
       return <IsLoading />;
     }
     if (this.state.err) return <Error err={this.state.err} />;
     return (
-      <div >
+      <div style={mystyle}>
         <SortBy function={this.fetchArticles} />
         <br></br>
         <ul>
@@ -51,13 +55,14 @@ class ArticlesList extends Component {
 
   fetchArticles = sort_by => {
     const { topic } = this.props;
-
+    console.log("fetchings");
     getArticles(topic, sort_by)
       .then(response => {
         this.setState({
           articles: response,
           isLoading: false,
-          sort_by: sort_by
+          sort_by: sort_by,
+          err: null
         });
       })
       .catch(({ response }) =>

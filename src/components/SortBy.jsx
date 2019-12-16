@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 class SortBy extends Component {
- 
   render() {
     return (
       <div>
@@ -20,6 +19,7 @@ class SortBy extends Component {
     );
   }
   handleChange = event => {
+    console.log(event.target.value);
     const fetchArticles = this.props.function;
     const sort_by = event.target.value;
     fetchArticles(sort_by);
