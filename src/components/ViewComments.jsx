@@ -120,7 +120,7 @@ class ViewComments extends Component {
     changeVotesOnComment(value, comment_id);
   }
 
-  // changeVotesOnComment(value, comment_id)
+  // changeVotesOnComment()
 
   componentDidMount() {
     const { article_id } = this.props;

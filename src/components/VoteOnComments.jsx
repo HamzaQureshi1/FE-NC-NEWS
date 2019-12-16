@@ -42,7 +42,7 @@ class VoteOnComments extends Component {
 
     // this.state.clicked = false;
     this.setState({ clicked: event.target.value });
-    
+
     const updateVotesOnComment = this.props.function;
     const comment_id = this.props.comment_id;
     const { value } = event.target;
