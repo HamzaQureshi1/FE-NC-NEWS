@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class SortBy extends Component {
   state = {
-    sort_by: null
+    sort_by: "created_at"
   };
   render() {
     // console.log(this.state.sort_by);
@@ -24,7 +24,7 @@ class SortBy extends Component {
   componentDidM;
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(value)
+    console.log(value);
     const fetchArticles = this.props.function;
 
     this.setState({ [name]: value });

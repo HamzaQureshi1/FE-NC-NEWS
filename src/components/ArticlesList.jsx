@@ -5,6 +5,7 @@ import SortBy from "./SortBy";
 import IsLoading from "./IsLoading";
 import ViewComments from "./ViewComments";
 import Error from "./Error";
+import ArticleCard from "./ArticleCard";
 
 class ArticlesList extends Component {
   state = {
@@ -28,6 +29,7 @@ class ArticlesList extends Component {
       <div style={mystyle}>
         <SortBy function={this.fetchArticles} />
         <br></br>
+        {/* <ArticleCard articles={this.state.articles} /> */}
         <ul>
           {this.state.articles.map(article => {
             return (
@@ -53,7 +55,7 @@ class ArticlesList extends Component {
     );
   }
 
-  fetchArticles = sort_by => {
+fetchArticles = sort_by => {
     const { topic } = this.props;
     console.log("fetchings");
     getArticles(topic, sort_by)
@@ -78,10 +80,20 @@ class ArticlesList extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
+    // console.log(this.state.sort_by);
+
     if (prevProps.topic !== topic) {
       this.fetchArticles();
     }
-  }
+   }
+
+
+
+
+
+
+
+
 }
 
 export default ArticlesList;
