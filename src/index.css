@@ -15,3 +15,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.mybox {
+  /* width: 200px; */
+  /* height: 400px; */
+  background-color: black;
+  border: 1px solid white;
+  outline: 3px solid #00483b;
+  color: white;
+}
+
+.mysecondbox {
+  /* width: 200px; */
+  /* height: 400px; */
+  background-color: blue;
+  border: 1px solid white;
+  outline: 3px solid #00483b;
+  margin: auto;
+  color: black;
+}

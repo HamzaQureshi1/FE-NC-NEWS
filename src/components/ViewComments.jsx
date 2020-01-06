@@ -12,6 +12,7 @@ import {
 import VoteOnComments from "./VoteOnComments";
 import PostComment from "./PostComment";
 import DeleteComment from "./DeleteComment";
+import "../index";
 
 class ViewComments extends Component {
   state = {
@@ -20,17 +21,19 @@ class ViewComments extends Component {
     err: null
   };
   render() {
-    const mystyle = {
-      color: "black",
-      backgroundColor: "DodgerBlue",
-      padding: "10px",
-      fontFamily: "Arial"
-    };
+    // const mystyle = {
+    //   color: "black",
+    //   backgroundColor: "DodgerBlue",
+    //   padding: "10px",
+    //   fontFamily: "Arial"
+    // };
     const { article_id } = this.props;
     if (this.state.err) return <Error err={this.state.err} />;
     if (this.state.username) {
       return (
-        <div style={mystyle}>
+        <div
+        // style={mystyle}
+        >
           <h1>COMMENTS</h1>
           <PostComment
             article_id={this.props.article_id}
@@ -41,28 +44,30 @@ class ViewComments extends Component {
           <ul>
             {this.state.comments.map(comment => {
               return (
-                <li key={comment.comment_id}>
-                  Author:{comment.author}
-                  <br></br>
-                  Body:{comment.body}
-                  <br></br>
-                  Created at:{comment.created_at}
-                  <br></br>
-                  Comment id: {comment.comment_id}
-                  <VoteOnComments
-                    votes={comment.votes}
-                    function={this.updateVotesOnComment}
-                    comment_id={comment.comment_id}
-                  />
-                  {comment.author === this.state.username ? (
-                    <DeleteComment
-                      author={comment.author}
+                <div className="mysecondbox">
+                  <li key={comment.comment_id}>
+                    Author:{comment.author}
+                    <br></br>
+                    Body:{comment.body}
+                    <br></br>
+                    Created at:{comment.created_at}
+                    <br></br>
+                    Comment id: {comment.comment_id}
+                    <VoteOnComments
+                      votes={comment.votes}
+                      function={this.updateVotesOnComment}
                       comment_id={comment.comment_id}
-                      username={this.state.username}
-                      delete={this.deleteAComment}
                     />
-                  ) : null}
-                </li>
+                    {comment.author === this.state.username ? (
+                      <DeleteComment
+                        author={comment.author}
+                        comment_id={comment.comment_id}
+                        username={this.state.username}
+                        delete={this.deleteAComment}
+                      />
+                    ) : null}
+                  </li>
+                </div>
               );
             })}
           </ul>

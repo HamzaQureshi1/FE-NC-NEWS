@@ -6,6 +6,7 @@ import IsLoading from "./IsLoading";
 import VoteOnArticle from "./VoteOnArticle";
 import ViewComments from "./ViewComments";
 import Error from "./Error";
+import "../index";
 
 class ArticleID extends Component {
   state = {
@@ -21,16 +22,21 @@ class ArticleID extends Component {
 
     if (this.state.err) return <Error err={this.state.err} />;
     if (this.state.isLoading) return <IsLoading />;
-    const mystyle = {
-      color: "black",
-      backgroundColor: "DodgerBlue",
-      padding: "10px",
-      fontFamily: "Arial"
-    };
+    // const mystyle = {
+    //   color: "black",
+    //   backgroundColor: "DodgerBlue",
+    //   padding: "10px",
+    //   fontFamily: "Arial"
+    // };
+
     return (
       <div>
-        <h1 style={mystyle}>ARTICLE</h1>
-        <div>
+        <h1
+        // style={mystyle}
+        >
+          ARTICLE
+        </h1>
+        <div className="mybox">
           <ul>
             <li key={article.article_id}>
               Article_id:{article.article_id}
@@ -53,8 +59,10 @@ class ArticleID extends Component {
         <h1>
           <VoteOnArticle function={this.updateVotesOnArticle} />
         </h1>
-
-        <ViewComments article_id={this.props.article_id} />
+        <div className="mybox">
+          {" "}
+          <ViewComments article_id={this.props.article_id} />{" "}
+        </div>
       </div>
     );
   }
