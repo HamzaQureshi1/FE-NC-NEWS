@@ -36,30 +36,32 @@ class ArticleID extends Component {
         >
           ARTICLE
         </h1>
-        <div className="mybox">
-          <ul>
-            <li key={article.article_id}>
-              Article_id:{article.article_id}
-              <br></br>
-              Title: {article.title}
-              <br></br>
-              Body:{article.body}
-              <br></br>
-              Votes:{article.votes} <br></br>
-              Topic:{article.topic}
-              <br></br>
-              Author:{article.author}
-              <br></br>
-              Created_at:{article.created_at}
-              <br></br>
-              Comment_Count:{article.comment_count}
-            </li>
-          </ul>
-        </div>
+        <section className="section">
+          <div className="box1">
+            <ul className="box">
+              <li key={article.article_id}>
+                Article_id:{article.article_id}
+                <br></br>
+                Title: {article.title}
+                <br></br>
+                Body:{article.body}
+                <br></br>
+                Votes:{article.votes} <br></br>
+                Topic:{article.topic}
+                <br></br>
+                Author:{article.author}
+                <br></br>
+                Created_at:{article.created_at}
+                <br></br>
+                Comment_Count:{article.comment_count}
+              </li>
+            </ul>
+          </div>
+        </section>
         <h1>
           <VoteOnArticle function={this.updateVotesOnArticle} />
         </h1>
-        <div className="mybox">
+        <div>
           {" "}
           <ViewComments article_id={this.props.article_id} />{" "}
         </div>

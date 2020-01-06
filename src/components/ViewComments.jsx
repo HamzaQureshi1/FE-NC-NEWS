@@ -32,7 +32,8 @@ class ViewComments extends Component {
     if (this.state.username) {
       return (
         <div
-        // style={mystyle}
+          // style={mystyle}
+          className="section"
         >
           <h1>COMMENTS</h1>
           <PostComment
@@ -41,11 +42,11 @@ class ViewComments extends Component {
             username={this.state.username}
           />
 
-          <ul>
+          <ul className="box1">
             {this.state.comments.map(comment => {
               return (
-                <div className="mysecondbox">
-                  <li key={comment.comment_id}>
+                <div>
+                  <li className="box" key={comment.comment_id}>
                     Author:{comment.author}
                     <br></br>
                     Body:{comment.body}

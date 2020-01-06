@@ -13,7 +13,11 @@ function App() {
   return (
     <div id="container">
       <Header class="one" />
-      <NavBar />
+      <div className="box2">
+        {" "}
+        <NavBar />
+      </div>
+
       <IsLoggedIn />
       <div>
         <Router>

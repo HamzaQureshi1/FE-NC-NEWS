@@ -16,46 +16,48 @@ class ArticlesList extends Component {
   };
 
   render() {
-    const mystyle = {
-      color: "black",
-      backgroundColor: "DodgerBlue",
-      padding: "10px"
-    };
+    // const mystyle = {
+    //   color: "black",
+    //   backgroundColor: "dark-grey",
+    //   padding: "10px"
+    // };
     if (this.state.isLoading) {
       return <IsLoading />;
     }
     if (this.state.err) return <Error err={this.state.err} />;
     return (
-      <div style={mystyle}>
+      <div>
         <SortBy function={this.fetchArticles} />
-        <br></br>
-        {/* <ArticleCard articles={this.state.articles} /> */}
-        <ul>
-          {this.state.articles.map(article => {
-            return (
-              <div>
-                <li key={article.article_id}>
-                  Author:{article.author} <br></br>
-                  Created at:{article.created_at} <br></br>
-                  Title: {article.title} <br></br>
-                  Topic:{article.topic} <br></br>
-                  Comment_count:{article.comment_count}
-                  <br></br>
-                  Votes:{article.votes}
-                  <br></br>
-                  <Link to={`/articles/${article.article_id}`}>
-                    Article_id:{article.article_id}
-                  </Link>
-                </li>
-              </div>
-            );
-          })}
-        </ul>
+        <div className="box2">
+          {/* <br></br> */}
+          {/* <ArticleCard articles={this.state.articles} /> */}
+          <ul className="box1">
+            {this.state.articles.map(article => {
+              return (
+                <div>
+                  <li className="box" key={article.article_id}>
+                    Author:{article.author} <br></br>
+                    Created at:{article.created_at} <br></br>
+                    Title: {article.title} <br></br>
+                    Topic:{article.topic} <br></br>
+                    Comment_count:{article.comment_count}
+                    <br></br>
+                    Votes:{article.votes}
+                    <br></br>
+                    <Link to={`/articles/${article.article_id}`}>
+                      Article_id:{article.article_id}
+                    </Link>
+                  </li>
+                </div>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     );
   }
 
-fetchArticles = sort_by => {
+  fetchArticles = sort_by => {
     const { topic } = this.props;
     console.log("fetchings");
     getArticles(topic, sort_by)
@@ -85,15 +87,7 @@ fetchArticles = sort_by => {
     if (prevProps.topic !== topic) {
       this.fetchArticles();
     }
-   }
-
-
-
-
-
-
-
-
+  }
 }
 
 export default ArticlesList;

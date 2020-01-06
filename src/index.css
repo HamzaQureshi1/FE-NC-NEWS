@@ -1,9 +1,10 @@
 body {
-  background-color: #eee;
+  background-color: light-grey;
 }
 
 #container {
   text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 header.class {
@@ -12,8 +13,7 @@ header.class {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .mybox {
@@ -23,6 +23,18 @@ code {
   border: 1px solid white;
   outline: 3px solid #00483b;
   color: white;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.column {
+  display: block;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  padding: 10px;
 }
 
 .mysecondbox {
@@ -33,4 +45,36 @@ code {
   outline: 3px solid #00483b;
   margin: auto;
   color: black;
+}
+
+.section {
+  background-color: white;
+  padding: 40px 20px;
+}
+
+.box {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: block;
+  padding: 20px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.box1 {
+  background-color: BLACK;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: block;
+  padding: 20px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.box2 {
+  background-color: BLACK;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: block;
+  padding: 10px;
+  font-family: "Roboto Condensed", sans-serif;
 }
