@@ -51,9 +51,10 @@ class ArticleID extends Component {
                 <br></br>
                 Author:{article.author}
                 <br></br>
+                Comment_Count:{article.comment_count}
+                <br></br>
                 Created_at:{article.created_at}
                 <br></br>
-                Comment_Count:{article.comment_count}
               </li>
             </ul>
           </div>

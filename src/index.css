@@ -59,6 +59,7 @@ code {
   display: block;
   padding: 20px;
   font-family: "Roboto Condensed", sans-serif;
+  overflow: auto;
 }
 
 .box1 {
