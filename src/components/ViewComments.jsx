@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { Link } from "@reach/router";
 import Error from "./Error";
 import IsLoading from "./IsLoading";
+import Moment from "react-moment";
 
 import {
   getComments,
@@ -51,8 +52,11 @@ class ViewComments extends Component {
                     <br></br>
                     Body:{comment.body}
                     <br></br>
-                    Created at:{comment.created_at}
-                    <br></br>
+                    Created at:
+                    <Moment>
+                      {comment.created_at}
+                    </Moment>
+                      <br></br>
                     Comment id: {comment.comment_id}
                     <VoteOnComments
                       votes={comment.votes}

@@ -6,6 +6,7 @@ import IsLoading from "./IsLoading";
 import ViewComments from "./ViewComments";
 import Error from "./Error";
 import ArticleCard from "./ArticleCard";
+import Moment from "react-moment";
 
 class ArticlesList extends Component {
   state = {
@@ -37,7 +38,7 @@ class ArticlesList extends Component {
                 <div>
                   <li className="box" key={article.article_id}>
                     Author:{article.author} <br></br>
-                    Created at:{article.created_at} <br></br>
+                    Created at:<Moment>{article.created_at}</Moment> <br></br>
                     Title: {article.title} <br></br>
                     Topic:{article.topic} <br></br>
                     Comment_count:{article.comment_count}

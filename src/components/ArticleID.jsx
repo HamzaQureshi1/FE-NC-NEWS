@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Moment from "react-moment";
 import { getSingleArticle } from "./api";
 import { changeVotesOnArticle } from "./api";
 import IsLoading from "./IsLoading";
@@ -53,7 +53,7 @@ class ArticleID extends Component {
                 <br></br>
                 Comment_Count:{article.comment_count}
                 <br></br>
-                Created_at:{article.created_at}
+                Created_at:<Moment>{article.created_at}</Moment>
                 <br></br>
               </li>
             </ul>
