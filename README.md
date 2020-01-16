@@ -13,7 +13,7 @@ NC-NEWS is reddit-style news aggregation board, which allow users to
 
 TO RUN THIS PROJECT LOCALLY :
 
-1. Find the directory you would like to install the application
+1. Find the directory you would like to install the application in.
 
 2. Enter `git clone https://github.com/HamzaQureshi1/FE-NC-NEWS` in the command line.
 
@@ -23,4 +23,6 @@ TO RUN THIS PROJECT LOCALLY :
 
 5. Then enter `cd nc-news`.
 
-6. Then enter `npm start` to start the project
+6. Then enter `npm start` to start the project.
+
+Link to hosted version : https://dazzling-torvalds-441884.netlify.com/
