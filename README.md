@@ -2,6 +2,8 @@
 
 ## Getting Started
 
+Experimental
+
 NC-NEWS is reddit-style news aggregation board, which allow users to
 
 - view and sort articles
