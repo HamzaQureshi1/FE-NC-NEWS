@@ -32,7 +32,7 @@ class ArticleID extends Component {
     return (
       <div>
         <h1
-        // style={mystyle}
+        
         >
           ARTICLE
         </h1>

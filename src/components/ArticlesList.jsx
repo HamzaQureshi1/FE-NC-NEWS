@@ -13,7 +13,7 @@ class ArticlesList extends Component {
     articles: [],
     isLoading: true,
     sort_by: "created_at",
-    err: null
+    err: null,
   };
 
   render() {
@@ -28,14 +28,18 @@ class ArticlesList extends Component {
     if (this.state.err) return <Error err={this.state.err} />;
     return (
       <div>
-        <SortBy function={this.fetchArticles} />
-        <div className="box2">
+        <section className="app-title">
+          <div className="app-title-content">
+            <SortBy function={this.fetchArticles} />
+          </div>
+        </section>
+        <div>
           {/* <br></br> */}
           {/* <ArticleCard articles={this.state.articles} /> */}
-          <ul className="box1">
-            {this.state.articles.map(article => {
+          <ul>
+            {this.state.articles.map((article) => {
               return (
-                <div>
+                <div className="app-card-list">
                   <li className="box" key={article.article_id}>
                     Author:{article.author} <br></br>
                     Created at:<Moment>{article.created_at}</Moment> <br></br>
@@ -58,22 +62,22 @@ class ArticlesList extends Component {
     );
   }
 
-  fetchArticles = sort_by => {
+  fetchArticles = (sort_by) => {
     const { topic } = this.props;
     console.log("fetchings");
     getArticles(topic, sort_by)
-      .then(response => {
+      .then((response) => {
         this.setState({
           articles: response,
           isLoading: false,
           sort_by: sort_by,
-          err: null
+          err: null,
         });
       })
       .catch(({ response }) =>
         this.setState({
           err: { status: response.status, msg: response.data.msg },
-          isLoading: false
+          isLoading: false,
         })
       );
   };

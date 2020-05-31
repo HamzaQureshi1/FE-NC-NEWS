@@ -11,9 +11,9 @@ import IsLoggedIn from "./components/IsLoggedIn";
 
 function App() {
   return (
-    <div id="container">
-      <Header class="one" />
-      <div className="box2">
+    <div>
+      <Header />
+      <div>
         {" "}
         <NavBar />
       </div>
