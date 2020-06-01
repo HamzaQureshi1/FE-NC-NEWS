@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 
 class VoteOnComments extends Component {
   state = {
     votes: this.props.votes,
-    clicked: 1
+    clicked: 1,
   };
 
   render() {
@@ -12,7 +13,9 @@ class VoteOnComments extends Component {
       <div>
         <div>
           Votes:{votes}
-          <button
+          <Button
+            size="sm"
+            variant="primary"
             ref="button"
             type="button"
             onClick={this.handleChange}
@@ -20,8 +23,10 @@ class VoteOnComments extends Component {
             disabled={this.state.clicked === "1" ? true : false}
           >
             Upvote Comment
-          </button>
-          <button
+          </Button>{" "}
+          <Button
+            size="sm"
+            variant="primary"
             ref="button1"
             type="button"
             onClick={this.handleChange}
@@ -29,12 +34,12 @@ class VoteOnComments extends Component {
             disabled={this.state.clicked === "-1" ? true : false}
           >
             Downvote Comment
-          </button>
+          </Button>
         </div>
       </div>
     );
   }
-  handleChange = event => {
+  handleChange = (event) => {
     // this.state.clicked = true;
     // if (this.state.clicked === true)
     //   this.refs.button.setAttribute("disabled", "disabled");

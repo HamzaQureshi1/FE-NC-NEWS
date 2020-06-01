@@ -17,19 +17,15 @@ class ArticlesList extends Component {
   };
 
   render() {
-    // const mystyle = {
-    //   color: "black",
-    //   backgroundColor: "dark-grey",
-    //   padding: "10px"
-    // };
+  
     if (this.state.isLoading) {
       return <IsLoading />;
     }
     if (this.state.err) return <Error err={this.state.err} />;
     return (
       <div>
-        <section className="app-title">
-          <div className="app-title-content">
+        <section >
+          <div >
             <SortBy function={this.fetchArticles} />
           </div>
         </section>
@@ -39,8 +35,8 @@ class ArticlesList extends Component {
           <ul>
             {this.state.articles.map((article) => {
               return (
-                <div className="app-card-list">
-                  <li className="box" key={article.article_id}>
+                <div >
+                  <li  key={article.article_id}>
                     Author:{article.author} <br></br>
                     Created at:<Moment>{article.created_at}</Moment> <br></br>
                     Title: {article.title} <br></br>

@@ -1,16 +1,17 @@
 import { postAComment } from "./api";
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 
 class PostComment extends Component {
   state = {
     body: "",
-    username: this.props.username
+    username: this.props.username,
   };
   render() {
     const addAComment = this.props.function;
 
     const article_id = this.props.article_id;
-    
+
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
@@ -22,18 +23,21 @@ class PostComment extends Component {
             value={this.state.body}
           />
         </label>
-        <input type="submit" value="Submit" />
+        <Button variant="primary" type="submit" size="sm">
+          Submit
+        </Button>
+        {/* <input type="submit" value="Submit" /> */}
       </form>
     );
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     const words = event.target.value;
     const username = this.props.username;
     this.setState({ body: words, username: username });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     const addAComment = this.props.function;
     event.preventDefault();
     const { article_id } = this.props;

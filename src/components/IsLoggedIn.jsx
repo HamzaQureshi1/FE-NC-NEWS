@@ -1,11 +1,18 @@
 import React, { Component } from "react";
+import { Badge } from "react-bootstrap";
 
 class IsLoggedIn extends Component {
   state = {
-    IsLoggedIn: "jessjelly"
+    IsLoggedIn: "jessjelly",
   };
   render() {
-    return <div> user:{this.state.IsLoggedIn}</div>;
+    return (
+      <div>
+        <Badge pill variant="primary">
+          user:{this.state.IsLoggedIn}
+        </Badge>{" "}
+      </div>
+    );
   }
 }
 

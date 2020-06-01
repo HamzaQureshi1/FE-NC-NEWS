@@ -1,13 +1,20 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 
 class DeleteComment extends Component {
   render() {
     const comment_id = this.props.comment_id;
-  
+
     return (
-      <button ref="button" type="button" onClick={this.handleChange}>
+      <Button
+        size="sm"
+        variant="primary"
+        ref="button"
+        type="button"
+        onClick={this.handleChange}
+      >
         Delete Comment
-      </button>
+      </Button>
     );
   }
 
