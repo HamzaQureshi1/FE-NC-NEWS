@@ -30,6 +30,7 @@ class ArticleID extends Component {
         <div>
           <section className="section">
             <div className="box1">
+              
               <ul className="box">
                 <li key={article.article_id}>
                   Article_id:{article.article_id}
