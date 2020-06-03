@@ -34,11 +34,11 @@ class ViewComments extends Component {
             username={this.state.username}
           />
 
-          <ul>
+          <ul className="box1">
             {this.state.comments.map((comment) => {
               return (
                 <div>
-                  <li key={comment.comment_id}>
+                  <li className="box" key={comment.comment_id}>
                     Author:{comment.author}
                     <br></br>
                     Body:{comment.body}

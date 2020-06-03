@@ -17,26 +17,36 @@ class ArticlesList extends Component {
   };
 
   render() {
-  
+    // <SortBy function={this.fetchArticles} />
+    //     <div className="box2">
+    //       {/* <br></br> */}
+    //       {/* <ArticleCard articles={this.state.articles} /> */}
+    //       <ul className="box1">
+    //         {this.state.articles.map(article => {
+    //           return (
+    //             <div>
+    //               <li className="box" key={article.article_id}></li>
+
     if (this.state.isLoading) {
       return <IsLoading />;
     }
     if (this.state.err) return <Error err={this.state.err} />;
     return (
       <div>
-        <section >
-          <div >
+        <section>
+          <div>
             <SortBy function={this.fetchArticles} />
           </div>
+          <br></br>
         </section>
         <div>
           {/* <br></br> */}
           {/* <ArticleCard articles={this.state.articles} /> */}
-          <ul>
+          <ul className="box1">
             {this.state.articles.map((article) => {
               return (
-                <div >
-                  <li  key={article.article_id}>
+                <div>
+                  <li className="box" key={article.article_id}>
                     Author:{article.author} <br></br>
                     Created at:<Moment>{article.created_at}</Moment> <br></br>
                     Title: {article.title} <br></br>

@@ -28,10 +28,84 @@
   border-color: #007bff;
 }
 
+body {
+  background-color: light-grey;
+}
 
+#container {
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+}
 
+header.class {
+  border-style: double;
+  border-width: 15px;
+}
 
+code {
+  font-family: "Roboto Condensed", sans-serif;
+}
 
+.mybox {
+  /* width: 200px; */
+  /* height: 400px; */
+  background-color: black;
+  border: 1px solid white;
+  outline: 3px solid #00483b;
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.column {
+  display: block;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  padding: 10px;
+}
 
-   
-  
+.mysecondbox {
+  /* width: 200px; */
+  /* height: 400px; */
+  background-color: blue;
+  border: 1px solid white;
+  outline: 3px solid #00483b;
+  margin: auto;
+  color: black;
+}
+
+.section {
+  background-color: white;
+  padding: 40px 20px;
+}
+
+.box {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: block;
+  padding: 20px;
+  font-family: "Roboto Condensed", sans-serif;
+  overflow: auto;
+}
+
+.box1 {
+  background-color: #007bff;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: block;
+  padding: 20px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.box2 {
+  background-color: black;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: block;
+  padding: 10px;
+  font-family: "Roboto Condensed", sans-serif;
+}
